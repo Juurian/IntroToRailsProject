@@ -10,7 +10,35 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_10_09_043109) do
+ActiveRecord::Schema[7.0].define(version: 2023_10_09_214620) do
+  create_table "cheap_games", force: :cascade do |t|
+    t.integer "game_summary_id"
+    t.string "title"
+    t.string "metacritic_link"
+    t.integer "metacritic_score"
+    t.string "steam_rating_text"
+    t.integer "steam_rating_percent"
+    t.integer "steam_rating_count"
+    t.integer "steam_app_id"
+    t.string "thumbnail"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["game_summary_id"], name: "index_cheap_games_on_game_summary_id"
+  end
+
+  create_table "free_games", force: :cascade do |t|
+    t.integer "summary_id"
+    t.string "title"
+    t.text "fdescription"
+    t.string "url"
+    t.string "genre"
+    t.string "platform"
+    t.string "publisher"
+    t.date "release_date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "game_summaries", force: :cascade do |t|
     t.string "summary_game_title"
     t.string "game_summary"
@@ -18,19 +46,19 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_09_043109) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "good_deals", force: :cascade do |t|
+  create_table "giveaways", force: :cascade do |t|
+    t.integer "summary_id"
     t.string "title"
-    t.float "salePrice"
-    t.float "normalPrice"
-    t.float "savings"
-    t.string "steamRatingText"
-    t.float "steamRatingPercent"
-    t.integer "steamRatingCount"
-    t.date "releaseDate"
-    t.float "dealRating"
-    t.string "thumb"
+    t.string "worth"
+    t.string "thumbnail"
+    t.text "instructions"
+    t.string "giveaway_url"
+    t.string "platforms"
+    t.date "end_date"
+    t.string "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "cheap_games", "game_summaries"
 end

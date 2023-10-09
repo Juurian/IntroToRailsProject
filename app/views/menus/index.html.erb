@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game Categories</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container text-center mt-5">
+        <h1>Menu</h1>
+        <div class="list-group mt-4">
+            <%= link_to "Games On Sale(Steam)", good_deals_path, class: "list-group-item list-group-item-action" %>
+            <a href="#" class="list-group-item list-group-item-action">Free Games</a>
+            <a href="#" class="list-group-item list-group-item-action">Giveaways</a>
+            <a href="#" class="list-group-item list-group-item-action">Game Info</a>
+            <%= link_to "About Us", abouts_path, class: "list-group-item list-group-item-action" %>
+        </div>
+    </div>
+
+
+</body>
+</html>

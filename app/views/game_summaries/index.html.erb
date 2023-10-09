@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Game Summaries</title>
+
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+  <div class="container">
+    <h1 class="mt-4">Game Summaries</h1>
+
+    <table class="table table-striped mt-4">
+      <thead>
+        <tr>
+          <th>Title</th>
+          <th>Summary</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @game_summaries.each do |game_summary| %>
+          <tr>
+            <td><%= game_summary.summary_game_title %></td>
+            <td><%= game_summary.game_summary %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="text-center">
+    <%= will_paginate @game_summaries %>
+  </div>
+
+</body>
+</html>

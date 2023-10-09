@@ -2,6 +2,7 @@
 
 # Require necessary libraries
 require "httparty"
+require "csv"
 
 # Fetch data from the API
 response = HTTParty.get("https://www.cheapshark.com/api/1.0/deals?storeID=1&upperPrice=15")
@@ -20,5 +21,16 @@ deals_data.each do |deal|
     releaseDate:        deal["releaseDate"],
     dealRating:         deal["dealRating"],
     thumb:              deal["thumb"]
+  )
+end
+
+# Specify the file path to your CSV file
+csv_file = Rails.root.join("db/csv_data/game_summaries.csv")
+
+# Read and create records from the CSV file
+CSV.foreach(csv_file, headers: true) do |row|
+  GameSummary.create!(
+    summary_game_title: row["Title"],
+    game_summary:       row["Summary"]
   )
 end

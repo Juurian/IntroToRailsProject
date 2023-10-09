@@ -1,7 +1,5 @@
 Rails.application.routes.draw do
-  # get "/abouts", to: "abouts#index"
-
-  # get "/menus", to: "menus#index"
+  root "menus#index"
 
   resources :abouts, only: [:index]
   resources :menus, only: [:index]

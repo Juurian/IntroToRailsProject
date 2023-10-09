@@ -6,9 +6,9 @@
   <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
-<!-- app/views/game_summaries/index.html.erb -->
 
 <div class="container">
+  <%= render 'shared/navbar' %>
   <h1 class="mt-4">Game Summaries</h1>
 
   <!-- Search Form -->
@@ -23,7 +23,7 @@
     <% end %>
   </div>
 
-  <!-- Add Bootstrap table styling -->
+  <!-- Table showing data -->
   <table class="table table-striped mt-4">
     <thead>
       <tr>
@@ -41,7 +41,7 @@
     </tbody>
   </table>
 
-  <!-- Apply Bootstrap pagination styling to the pagination div -->
+  <!-- Pagination -->
   <div class="text-center">
     <ul class="pagination">
       <%= will_paginate @game_summaries, class: 'page-item' %>

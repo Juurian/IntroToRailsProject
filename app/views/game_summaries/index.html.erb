@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Game Summaries</title>
+
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+
+<div class="container">
+  <%= render 'shared/navbar' %>
+  <h1 class="mt-4">Game Summaries</h1>
+
+  <!-- Search Form -->
+  <div class="mb-3">
+    <%= form_tag(game_summaries_path, method: :get, class: "form-inline") do %>
+      <div class="input-group">
+        <%= text_field_tag :search, params[:search], class: "form-control", placeholder: "Search by Game Title" %>
+        <div class="input-group-append">
+          <%= submit_tag "Search", class: "btn btn-primary" %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+
+  <!-- Table showing data -->
+  <table class="table table-striped mt-4">
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Summary</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @game_summaries.each do |game_summary| %>
+        <tr>
+          <td><%= game_summary.summary_game_title %></td>
+          <td><%= game_summary.game_summary %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <!-- Pagination -->
+  <div class="text-center">
+    <ul class="pagination">
+      <%= will_paginate @game_summaries, class: 'page-item' %>
+    </ul>
+  </div>
+</div>
+
+
+</body>
+</html>

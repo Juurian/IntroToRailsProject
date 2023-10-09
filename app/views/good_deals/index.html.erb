@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Good Deals</title>
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+  <div class="container">
+    <%= render 'shared/navbar' %>
+    <h1 class="mt-4">Good Deals</h1>
+    <table class="table table-striped mt-4">
+      <thead>
+        <tr>
+          <th>Title</th>
+          <th>Sale Price</th>
+          <th>Normal Price</th>
+          <th>Savings</th>
+          <th>Steam Rating Text</th>
+          <th>Steam Rating Percent</th>
+          <th>Steam Rating Count</th>
+          <th>Release Date</th>
+          <th>Deal Rating</th>
+          <th>Thumb</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @good_deals.each do |deal| %>
+          <tr>
+            <td><%= deal.title %></td>
+            <td><%= deal.salePrice %></td>
+            <td><%= deal.normalPrice %></td>
+            <td><%= deal.savings %></td>
+            <td><%= deal.steamRatingText %></td>
+            <td><%= deal.steamRatingPercent %></td>
+            <td><%= deal.steamRatingCount %></td>
+            <td><%= deal.releaseDate %></td>
+            <td><%= deal.dealRating %></td>
+          <td>
+            <img src="<%= deal.thumb %>" alt="<%= deal.title %> Thumbnail" class="img-thumbnail" width="100">
+          </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+
+</body>
+</html>

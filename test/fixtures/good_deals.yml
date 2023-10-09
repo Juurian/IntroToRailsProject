@@ -1,0 +1,25 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  salePrice: 1.5
+  normalPrice: 1.5
+  savings: 1.5
+  steamRatingText: MyString
+  steamRatingPercent: 1.5
+  steamRatingCount: 1
+  releaseDate: 2023-10-08
+  dealRating: 1.5
+  thumb: MyString
+
+two:
+  title: MyString
+  salePrice: 1.5
+  normalPrice: 1.5
+  savings: 1.5
+  steamRatingText: MyString
+  steamRatingPercent: 1.5
+  steamRatingCount: 1
+  releaseDate: 2023-10-08
+  dealRating: 1.5
+  thumb: MyString

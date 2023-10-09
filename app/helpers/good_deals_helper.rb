@@ -1,0 +1,2 @@
+module GoodDealsHelper
+end

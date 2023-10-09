@@ -1,2 +1,0 @@
-class GoodDeal < ApplicationRecord
-end

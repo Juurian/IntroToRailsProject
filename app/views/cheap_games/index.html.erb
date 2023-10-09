@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Cheap Games</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-pzjw8f+ua7Kw1TIq0v8FqFjcJ6pajs/rfdfs3SO+kAggqJwxH51oW5q5xX7+Ks5V9P" crossorigin="anonymous">
+</head>
+<body>
+
+<div class="container mt-4">
+  <%= render 'shared/navbar' %>
+  <h1>Cheap Games</h1>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Metacritic Link</th>
+        <th>Metacritic Score</th>
+        <th>Steam Rating Text</th>
+        <th>Steam Rating Percent</th>
+        <th>Steam Rating Count</th>
+        <th>Steam App ID</th>
+        <th>Thumbnail</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @cheap_games.each do |cheap_game| %>
+        <tr>
+          <td><%= cheap_game.title %></td>
+          <td><%= cheap_game.metacritic_link %></td>
+          <td><%= cheap_game.metacritic_score %></td>
+          <td><%= cheap_game.steam_rating_text %></td>
+          <td><%= cheap_game.steam_rating_percent %></td>
+          <td><%= cheap_game.steam_rating_count %></td>
+          <td><%= cheap_game.steam_app_id %></td>
+          <td><img src="<%= cheap_game.thumbnail %>" alt="<%= cheap_game.title %> Thumbnail" height="100"></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+
+
+</body>
+</html>

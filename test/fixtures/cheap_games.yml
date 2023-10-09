@@ -1,0 +1,23 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  summary_id: 1
+  title: MyString
+  metacritic_link: MyString
+  metacritic_score: 1
+  steam_rating_text: MyString
+  steam_rating_percent: 1
+  steam_rating_count: 1
+  steam_app_id: 1
+  thumbnail: MyString
+
+two:
+  summary_id: 1
+  title: MyString
+  metacritic_link: MyString
+  metacritic_score: 1
+  steam_rating_text: MyString
+  steam_rating_percent: 1
+  steam_rating_count: 1
+  steam_app_id: 1
+  thumbnail: MyString

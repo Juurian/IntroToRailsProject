@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Free Games</title>
+  <!-- Include Bootstrap CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+  <%= render 'shared/navbar' %>
+  <div class="container mt-4">
+    <h1 class="mb-4">Free Games</h1>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Title</th>
+          <th>Description</th>
+          <th>URL</th>
+          <th>Genre</th>
+          <th>Platform</th>
+          <th>Publisher</th>
+          <th>Release Date</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Loop through and display data from free_games table -->
+        <% @free_games.each do |free_game| %>
+          <tr>
+            <td><%= free_game.title %></td>
+            <td><%= free_game.fdescription %></td>
+            <td><a href="<%= free_game.url %>" target="_blank">Visit</a></td>
+            <td><%= free_game.genre %></td>
+            <td><%= free_game.platform %></td>
+            <td><%= free_game.publisher %></td>
+            <td><%= free_game.release_date %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</body>
+</html>

@@ -33,8 +33,8 @@ CheapGame.destroy_all
 
 # Define a method to fetch data from the API
 def fetch_giveaways
-  response = HTTParty.get("https://www.gamerpower.com/api/giveaways") # Replace with your API URL
-  JSON.parse(response.body)
+  response1 = HTTParty.get("https://www.gamerpower.com/api/giveaways") # Replace with your API URL
+  JSON.parse(response1.body)
 end
 
 # Delete all existing records from the Giveaway table
@@ -58,8 +58,8 @@ giveaways_data.each do |giveaway|
     end_date:     giveaway["end_date"],
     status:       giveaway["status"]
 # Fetch data from the API
-response = HTTParty.get("https://www.cheapshark.com/api/1.0/deals?storeID=1&upperPrice=15")
-deals = JSON.parse(response.body)
+response2 = HTTParty.get("https://www.cheapshark.com/api/1.0/deals?storeID=1&upperPrice=15")
+deals = JSON.parse(response2.body)
 
 # Loop through the API data and create CheapGame records
 deals.each do |deal|

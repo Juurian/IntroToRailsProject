@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cheap Games</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+  <%= render 'shared/navbar' %>
+  <div class="container mt-4">
+    <h1 class="mb-4">Cheap Games</h1>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Title</th>
+          <th>Metacritic Link</th>
+          <th>Metacritic Score</th>
+          <th>Steam Rating Text</th>
+          <th>Steam Rating Percent</th>
+          <th>Steam Rating Count</th>
+          <th>Steam App ID</th>
+          <th>Thumbnail</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Loop through and display data from cheap_games table -->
+        <% @cheap_games.each do |cheap_game| %>
+          <tr>
+            <td><%= cheap_game.title %></td>
+            <td><%= cheap_game.metacritic_link %></td>
+            <td><%= cheap_game.metacritic_score %></td>
+            <td><%= cheap_game.steam_rating_text %></td>
+            <td><%= cheap_game.steam_rating_percent %></td>
+            <td><%= cheap_game.steam_rating_count %></td>
+            <td><%= cheap_game.steam_app_id %></td>
+            <td><img src="<%= cheap_game.thumbnail %>" alt="<%= cheap_game.title %>" width="100"></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</body>
+</html>

@@ -57,6 +57,8 @@ giveaways_data.each do |giveaway|
     platforms:    giveaway["platforms"],
     end_date:     giveaway["end_date"],
     status:       giveaway["status"]
+  )
+end
 # Fetch data from the API
 response2 = HTTParty.get("https://www.cheapshark.com/api/1.0/deals?storeID=1&upperPrice=15")
 deals = JSON.parse(response2.body)

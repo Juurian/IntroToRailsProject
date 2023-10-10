@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_10_09_211348) do
+ActiveRecord::Schema[7.0].define(version: 2023_10_09_214620) do
   create_table "cheap_games", force: :cascade do |t|
     t.integer "game_summary_id"
     t.string "title"
@@ -42,6 +42,20 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_09_211348) do
   create_table "game_summaries", force: :cascade do |t|
     t.string "summary_game_title"
     t.string "game_summary"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "giveaways", force: :cascade do |t|
+    t.integer "summary_id"
+    t.string "title"
+    t.string "worth"
+    t.string "thumbnail"
+    t.text "instructions"
+    t.string "giveaway_url"
+    t.string "platforms"
+    t.date "end_date"
+    t.string "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

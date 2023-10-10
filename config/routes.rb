@@ -6,5 +6,6 @@ Rails.application.routes.draw do
   resources :deals, only: [:index]
   resources :good_deals, only: [:index]
   resources :free_games, only: [:index]
+  resources :giveaways, only: [:index]
   resources :game_summaries, only: [:index]
 end

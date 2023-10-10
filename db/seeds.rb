@@ -15,24 +15,31 @@ require "csv"
 #   )
 # end
 
-# Fetch data from the API
-FreeGame.destroy_all
+# Define a method to fetch data from the API
+def fetch_giveaways
+  response = HTTParty.get("https://www.gamerpower.com/api/giveaways") # Replace with your API URL
+  JSON.parse(response.body)
+end
 
-response = HTTParty.get("https://www.freetogame.com/api/games")
-games_data = JSON.parse(response.body)
+# Delete all existing records from the Giveaway table
+Giveaway.destroy_all
 
-games_data.each do |game|
-  game_summary = GameSummary.find_by(summary_game_title: game["title"])
+# Fetch data from the API and insert new records
+giveaways_data = fetch_giveaways
+
+giveaways_data.each do |giveaway|
+  game_summary = GameSummary.find_by(summary_game_title: giveaway["title"])
   game_summary_id = game_summary.id if game_summary
 
-  FreeGame.create(
+  Giveaway.create(
     summary_id:   game_summary_id,
-    title:        game["title"],
-    fdescription: game["short_description"],
-    url:          game["game_url"],
-    genre:        game["genre"],
-    platform:     game["platform"],
-    publisher:    game["publisher"],
-    release_date: game["release_date"]
+    title:        giveaway["title"],
+    worth:        giveaway["worth"],
+    thumbnail:    giveaway["thumbnail"],
+    instructions: giveaway["instructions"],
+    giveaway_url: giveaway["open_giveaway_url"],
+    platforms:    giveaway["platforms"],
+    end_date:     giveaway["end_date"],
+    status:       giveaway["status"]
   )
 end

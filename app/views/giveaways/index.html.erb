@@ -1,0 +1,47 @@
+<!-- app/views/giveaways/index.html.erb -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Giveaways</title>
+  <!-- Include Bootstrap CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+  <%= render 'shared/navbar' %>
+  <div class="container mt-4">
+    <h1 class="mb-4">Giveaways</h1>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Title</th>
+          <th>Worth</th>
+          <th>Thumbnail</th>
+          <th>Instructions</th>
+          <th>Giveaway URL</th>
+          <th>Platforms</th>
+          <th>End Date</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Loop through and display data from giveaways table -->
+        <% @giveaways.each do |giveaway| %>
+          <tr>
+            <td><%= giveaway.title %></td>
+            <td><%= giveaway.worth %></td>
+            <td><img src="<%= giveaway.thumbnail %>" alt="<%= giveaway.title %>" width="100"></td>
+            <td><%= giveaway.instructions %></td>
+            <td><a href="<%= giveaway.giveaway_url %>" target="_blank">Visit</a></td>
+            <td><%= giveaway.platforms %></td>
+            <td><%= giveaway.end_date %></td>
+            <td><%= giveaway.status %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</body>
+</html>

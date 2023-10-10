@@ -1,0 +1,2 @@
+class CheapGame < ApplicationRecord
+end

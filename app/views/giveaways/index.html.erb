@@ -9,6 +9,7 @@
 
 <body>
   <%= render 'shared/navbar' %>
+
   <div class="container mt-4">
     <h1 class="mb-4">Giveaways</h1>
 
@@ -18,6 +19,20 @@
         <%= submit_tag "Search", class: "btn btn-primary" %>
       </div>
     <% end %>
+
+  <div class="row">
+    <% @giveaways.each do |giveaway| %>
+      <div class="col-md-4">
+        <div class="card mb-4">
+          <div class="card-body">
+            <h5 class="card-title"><%= giveaway.title %></h5>
+            <img src="<%= giveaway.thumbnail %>" class="card-img-top" alt="<%= giveaway.title %>">
+            <h6><%= giveaway.worth %> worth giveaway!<h6>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
 
 <!--
     <table class="table table-striped">
@@ -49,20 +64,6 @@
       </tbody>
     </table>
 -->
-
-  <div class="row">
-    <% @giveaways.each do |giveaway| %>
-      <div class="col-md-4">
-        <div class="card mb-4">
-          <img src="<%= giveaway.thumbnail %>" class="card-img-top" alt="<%= giveaway.title %>">
-            <div class="card-body">
-              <h5 class="card-title"><%= giveaway.title %></h5>
-              <h6><%= giveaway.worth %> worth giveaway!<h6>
-            </div>
-        </div>
-      </div>
-    <% end %>
-  </div>
 
   <div class="pagination-container">
     <%= will_paginate @giveaways, previous_label: 'Previous', next_label: 'Next', class: 'pagination justify-content-center' %>

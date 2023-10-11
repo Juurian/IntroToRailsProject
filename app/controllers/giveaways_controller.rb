@@ -1,6 +1,11 @@
 class GiveawaysController < ApplicationController
   def index
-    # Fetch the Giveaway records from the database
     @giveaways = Giveaway.all
+
+    # Search functionality
+    @giveaways = @giveaways.where("title LIKE ?", "%#{params[:search]}%") if params[:search]
+
+    # Pagination
+    @giveaways = @giveaways.paginate(page: params[:page], per_page: 18)
   end
 end

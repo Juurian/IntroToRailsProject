@@ -8,35 +8,51 @@
 </head>
 
 <body>
-<%= render 'shared/navbar' %>
+  <%= render 'shared/navbar' %>
 
-<div class="container mt-4">
-  <h1><%= @cheap_game.title %></h1>
+  <div class="container mt-4">
+    <div class="row justify-content-center">
+      <div class="col-md-8">
+        <div>
+          <h1 class="text-center"><%= @cheap_game.title %></h1>
+        </div>
+      </div>
+    </div>
 
-  <div class="row">
-    <div class="col-md-4">
-      <img src="<%= @cheap_game.thumbnail %>" class="img-fluid" alt="<%= @cheap_game.title %>">
+    <div class="row justify-content-center mt-4">
+      <div class="col-md-8">
+        <div class="border rounded p-5">
+          <div class="row">
+            <div class="col-md-4">
+              <h2>Game info on Steam</h2>
+              <img src="<%= @cheap_game.thumbnail %>" class="img-fluid" alt="<%= @cheap_game.title %>">
+            </div>
+            <div class="col-md-8">
+              <p><strong><a href="https://www.metacritic.com<%= @cheap_game.metacritic_link %>">Metacritic Link</a></strong></p>
+              <p><strong>Metacritic Score:</strong> <%= @cheap_game.metacritic_score %></p>
+              <p><strong>Steam Rating Text:</strong> <%= @cheap_game.steam_rating_text %></p>
+              <p><strong>Steam Rating Percent:</strong> <%= @cheap_game.steam_rating_percent %></p>
+              <p><strong>Steam App ID:</strong> <%= @cheap_game.steam_app_id %></p>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="col-md-8">
-      <p><strong>Metacritic Link:</strong> <%= link_to 'Metacritic', @cheap_game.metacritic_link %></p>
-      <p><strong>Metacritic Score:</strong> <%= @cheap_game.metacritic_score %></p>
-      <p><strong>Steam Rating Text:</strong> <%= @cheap_game.steam_rating_text %></p>
-      <p><strong>Steam Rating Percent:</strong> <%= @cheap_game.steam_rating_percent %></p>
-      <p><strong>Steam App ID:</strong> <%= @cheap_game.steam_app_id %></p>
-    </div>
-  </div>
 
     <!-- Display the description from the associated GameSummary, if available -->
-    <div class="mt-4">
-      <h2>Description</h2>
-      <% game_summary = GameSummary.find_by(id: @cheap_game.game_summary_id) %>
-        <% if game_summary.present? %>
-          <p><%= game_summary.game_summary %></p>
-        <% else %>
-          <p>No description available</p>
-      <% end %>
+    <div class="row justify-content-center mt-4"></div>
+      <div class="col-md-8">
+        <div class="border rounded p-5">
+          <h2 class="text-center">Description</h2>
+          <% game_summary = GameSummary.find_by(id: @cheap_game.game_summary_id) %>
+          <% if game_summary.present? %>
+            <p><%= game_summary.game_summary %></p>
+          <% else %>
+            <p class="text-center">No description available</p>
+          <% end %>
+        </div>
+      </div>
+    </div>
   </div>
-
-</div>
 </body>
 </html>

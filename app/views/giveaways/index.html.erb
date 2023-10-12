@@ -1,18 +1,44 @@
-<!-- app/views/giveaways/index.html.erb -->
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Giveaways</title>
-  <!-- Include Bootstrap CSS -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
+
 <body>
   <%= render 'shared/navbar' %>
+
   <div class="container mt-4">
     <h1 class="mb-4">Giveaways</h1>
+
+  <div class="mb-3">
+    <%= form_tag(giveaways_path, method: :get, class: "form-inline") do %>
+      <div class="form-group">
+        <%= text_field_tag :search, params[:search], class: "form-control", placeholder: "Search by Game Title" %>
+        <div class="input-group-append">
+          <%= submit_tag "Search", class: "btn btn-primary" %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="row">
+    <% @giveaways.each do |giveaway| %>
+      <div class="col-md-4">
+        <div class="card mb-4">
+          <div class="card-body">
+            <h5 class="card-title"><%= giveaway.title %></h5>
+            <img src="<%= giveaway.thumbnail %>" class="card-img-top" alt="<%= giveaway.title %>">
+            <h6><%= giveaway.worth %> worth giveaway!<h6>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+
+<!--
     <table class="table table-striped">
       <thead>
         <tr>
@@ -27,7 +53,6 @@
         </tr>
       </thead>
       <tbody>
-        <!-- Loop through and display data from giveaways table -->
         <% @giveaways.each do |giveaway| %>
           <tr>
             <td><%= giveaway.title %></td>
@@ -42,6 +67,11 @@
         <% end %>
       </tbody>
     </table>
+-->
+
+  <div class="pagination-container mb-4">
+    <%= will_paginate @giveaways, previous_label: 'Previous', next_label: 'Next', class: 'pagination justify-content-center' %>
   </div>
 </body>
+
 </html>

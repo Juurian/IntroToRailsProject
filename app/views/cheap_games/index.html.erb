@@ -6,10 +6,42 @@
   <title>Cheap Games</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
+
 <body>
   <%= render 'shared/navbar' %>
+
   <div class="container mt-4">
     <h1 class="mb-4">Cheap Games</h1>
+
+  <!-- Search Form -->
+  <div class="mb-3">
+    <%= form_tag(cheap_games_path, method: :get, class: "form-inline") do %>
+      <div class="form-group">
+        <%= text_field_tag :search, params[:search], class: "form-control", placeholder: "Search by Game Title" %>
+        <div class="input-group-append">
+          <%= submit_tag "Search", class: "btn btn-primary" %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+
+  <!-- Grid showing data -->
+  <div class="row">
+    <% @cheap_games.each do |cheap_game| %>
+      <div class="col-md-4">
+        <div class="card mb-4">
+          <div class="card-body">
+            <h5 class="card-title"><%= cheap_game.title %></h5>
+            <img src="<%= cheap_game.thumbnail %>" class="card-img-top" alt="<%= cheap_game.title %>">
+            <h6 class="card-text">Rating: <%= cheap_game.steam_rating_text %><h6>
+            <p class="card-text">Rating %: <%= cheap_game.steam_rating_percent %><p>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+
+<!--
     <table class="table table-striped">
       <thead>
         <tr>
@@ -24,7 +56,6 @@
         </tr>
       </thead>
       <tbody>
-        <!-- Loop through and display data from cheap_games table -->
         <% @cheap_games.each do |cheap_game| %>
           <tr>
             <td><%= cheap_game.title %></td>
@@ -39,6 +70,10 @@
         <% end %>
       </tbody>
     </table>
+-->
+    <div class="pagination-container mb-4">
+      <%= will_paginate @cheap_games, previous_label: 'Previous', next_label: 'Next', class: 'pagination justify-content-center' %>
+    </div>
   </div>
 </body>
 </html>

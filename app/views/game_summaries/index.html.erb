@@ -1,14 +1,16 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Game Summaries</title>
-
   <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 </head>
+
 <body>
+  <%= render 'shared/navbar' %>
 
 <div class="container">
-  <%= render 'shared/navbar' %>
   <h1 class="mt-4">Game Summaries</h1>
 
   <!-- Search Form -->
@@ -42,10 +44,8 @@
   </table>
 
   <!-- Pagination -->
-  <div class="text-center">
-    <ul class="pagination">
-      <%= will_paginate @game_summaries, class: 'page-item' %>
-    </ul>
+  <div class="pagination-container mb-4">
+    <%= will_paginate @game_summaries, previous_label: 'Previous', next_label: 'Next', class: 'pagination justify-content-center' %>
   </div>
 </div>
 

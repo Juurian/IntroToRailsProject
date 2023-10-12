@@ -4,13 +4,28 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Free Games</title>
-  <!-- Include Bootstrap CSS -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
+
 <body>
   <%= render 'shared/navbar' %>
+
   <div class="container mt-4">
     <h1 class="mb-4">Free Games</h1>
+
+    <!-- Search Form -->
+    <div class="mb-3">
+      <%= form_tag(free_games_path, method: :get, class: "form-inline") do %>
+        <div class="input-group">
+          <%= text_field_tag :search, params[:search], class: "form-control", placeholder: "Search by Game Title" %>
+          <div class="input-group-append">
+            <%= submit_tag "Search", class: "btn btn-primary" %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+
+    <!-- Table showing data -->
     <table class="table table-striped">
       <thead>
         <tr>
@@ -24,7 +39,6 @@
         </tr>
       </thead>
       <tbody>
-        <!-- Loop through and display data from free_games table -->
         <% @free_games.each do |free_game| %>
           <tr>
             <td><%= free_game.title %></td>
@@ -38,6 +52,12 @@
         <% end %>
       </tbody>
     </table>
+
+    <!-- Pagination -->
+    <div class="pagination-container mb-4">
+      <%= will_paginate @free_games, previous_label: 'Previous', next_label: 'Next', class: 'pagination justify-content-center' %>
+    </div>
   </div>
 </body>
+
 </html>

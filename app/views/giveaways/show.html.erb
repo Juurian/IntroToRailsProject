@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= @giveaway.title %></title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+
+<body>
+  <%= render 'shared/navbar' %>
+
+  <div class="container mt-4">
+    <div class="row justify-content-center">
+      <div class="col-md-8">
+        <div>
+          <h1 class="text-center"><%= @giveaway.title %></h1>
+        </div>
+      </div>
+    </div>
+
+    <div class="row justify-content-center mt-4">
+      <div class="col-md-8">
+        <div class="border rounded p-5">
+          <div class="row">
+            <div class="col-md-4">
+              <h2>Game info on Steam</h2>
+              <img src="<%= @giveaway.thumbnail %>" class="img-fluid" alt="<%= @giveaway.title %>">
+            </div>
+            <div class="col-md-8">
+              <p><strong>worth:</strong> <%= @giveaway.metacritic_score %></p>
+              <p><strong>giveaway url:</strong> <%= @giveaway.giveaway_url %></p>
+              <p><strong>platforms:</strong> <%= @giveaway.platforms %></p>
+              <p><strong>end date:</strong> <%= @giveaway.end_date %></p>
+              <p><strong>status:</strong> <%= @giveaway.status %></p>
+            </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Display the description from the associated GameSummary, if available -->
+    <div class="row justify-content-center mt-4"></div>
+      <div class="col-md-8">
+        <div class="border rounded p-5">
+          <h2 class="text-center">Description</h2>
+          <% game_summary = GameSummary.find_by(id: @giveaway.game_summary_id) %>
+          <% if game_summary.present? %>
+            <p><%= game_summary.game_summary %></p>
+          <% else %>
+            <p class="text-center">No description available</p>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

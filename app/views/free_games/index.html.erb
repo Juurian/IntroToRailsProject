@@ -25,6 +25,10 @@
       <% end %>
     </div>
 
+    <div class="pagination-container mb-4">
+      <%= will_paginate @free_games, previous_label: 'Previous', next_label: 'Next', class: 'pagination justify-content-center' %>
+    </div>
+
     <!-- Table showing data -->
     <table class="table table-striped">
       <thead>

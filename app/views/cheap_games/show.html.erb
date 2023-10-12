@@ -40,15 +40,15 @@
     </div>
 
     <!-- Display the description from the associated GameSummary, if available -->
-    <div class="row justify-content-center mt-4"></div>
+    <div class="row justify-content-center mt-4">
       <div class="col-md-8">
         <div class="border rounded p-5">
-          <h2 class="text-center">Description</h2>
+          <h2 class="text-center">Game Summary</h2>
           <% game_summary = GameSummary.find_by(id: @cheap_game.game_summary_id) %>
           <% if game_summary.present? %>
             <p><%= game_summary.game_summary %></p>
           <% else %>
-            <p class="text-center">No description available</p>
+            <p class="text-center">No game summary available</p>
           <% end %>
         </div>
       </div>

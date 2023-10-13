@@ -25,16 +25,22 @@
     <% end %>
   </div>
 
+  <div class="pagination-container mb-4">
+    <%= will_paginate @cheap_games, previous_label: 'Previous', next_label: 'Next', class: 'pagination justify-content-center' %>
+  </div>
+
   <!-- Grid showing data -->
   <div class="row">
     <% @cheap_games.each do |cheap_game| %>
       <div class="col-md-4">
         <div class="card mb-4">
           <div class="card-body">
-            <h5 class="card-title"><%= cheap_game.title %></h5>
-            <img src="<%= cheap_game.thumbnail %>" class="card-img-top" alt="<%= cheap_game.title %>">
+            <h5><%= link_to cheap_game.title, cheap_game_path(cheap_game), class: "text-reset card-title" %></h5>
+            <a href="<%= cheap_game_path(cheap_game) %>">
+              <img src="<%= cheap_game.thumbnail %>" class="card-img-top" alt="<%= cheap_game.title %>">
+            </a>
             <h6 class="card-text">Rating: <%= cheap_game.steam_rating_text %><h6>
-            <p class="card-text">Rating %: <%= cheap_game.steam_rating_percent %><p>
+            <p class="card-text">Rating : <%= cheap_game.steam_rating_percent %>%<p>
           </div>
         </div>
       </div>

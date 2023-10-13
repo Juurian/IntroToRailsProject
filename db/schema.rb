@@ -21,6 +21,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_09_214620) do
     t.integer "steam_rating_count"
     t.integer "steam_app_id"
     t.string "thumbnail"
+    t.decimal "sale_price"
+    t.decimal "normal_price"
+    t.string "savings"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["game_summary_id"], name: "index_cheap_games_on_game_summary_id"
@@ -35,6 +38,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_09_214620) do
     t.string "platform"
     t.string "publisher"
     t.date "release_date"
+    t.string "thumbnail"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

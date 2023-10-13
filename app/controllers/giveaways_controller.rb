@@ -8,4 +8,8 @@ class GiveawaysController < ApplicationController
     # Pagination
     @giveaways = @giveaways.paginate(page: params[:page], per_page: 18)
   end
+
+  def show
+    @giveaways = Giveaway.find(params[:id])
+  end
 end

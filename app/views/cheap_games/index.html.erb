@@ -4,43 +4,77 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Cheap Games</title>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
 </head>
 
-<body>
+<body class="bg-secondary text-white">
   <%= render 'shared/navbar' %>
 
   <div class="container mt-4">
-    <h1 class="mb-4">Games on Sale (Steam)</h1>
+<h1 class="mb-4"><%= image_tag("steam_logo.png", style: "width: 100px; height: auto;") %> Games on Sale (Steam)</h1>
+
 
   <!-- Search Form -->
-  <div class="mb-3">
-    <%= form_tag(cheap_games_path, method: :get, class: "form-inline") do %>
-      <div class="form-group">
-        <%= text_field_tag :search, params[:search], class: "form-control", placeholder: "Search by Game Title" %>
-        <div class="input-group-append">
-          <%= submit_tag "Search", class: "btn btn-primary" %>
-        </div>
+<div class="mb-3 d-flex">
+  <%= form_tag(cheap_games_path, method: :get, class: "form-inline w-100") do %>
+    <div class="input-group w-100">
+      <%= text_field_tag :search, params[:search], class: "form-control w-75", placeholder: "Search by Game Title" %>
+      <div class="input-group-append w-25">
+        <%= submit_tag "Search", class: "btn btn-primary w-100" %>
       </div>
-    <% end %>
-  </div>
+    </div>
+  <% end %>
+</div>
+
+<!-- Pagination -->
+      <div class="pagination-container mb-4">
+      <%= will_paginate @cheap_games, previous_label: 'Previous', next_label: 'Next', class: 'pagination justify-content-center' %>
+    </div>
 
 <!-- Grid showing data -->
 <div class="row">
   <% @cheap_games.each do |cheap_game| %>
-    <div class="col-md-4">
-      <div class="card mb-4">
-        <div class="card-body">
-          <h5 class="card-title text-center"><%= cheap_game.title %></h5>
+    <div class="col-md-3" style="width: 30%; margin-left: 30px;">
+      <div class="card mb-3 bg-dark text-white" style="width:110%;">
+        <div class="card-body" style="height:460px;">
+          <h5 class="card-title text-center mb-3"><%= cheap_game.title %></h5>
           <img src="<%= cheap_game.thumbnail %>" class="card-img-top" alt="<%= cheap_game.title %>">
           <div class="d-flex justify-content-between mt-2">
             <p class="card-text mb-1 text-center">
-              <span class="font-weight-bold">Steam Review:</span> <br><%= cheap_game.steam_rating_text %>
+              <span class="font-weight-bold bg-secondary text-white">Steam Reviews</span> <br><%= cheap_game.steam_rating_text %>
             </p>
             <p class="card-text mb-1 text-center">
-              <span class="font-weight-bold">Steam Rating:</span> <br><%= cheap_game.steam_rating_percent %>%
+              <span class="font-weight-bold bg-secondary text-white">Steam Rating</span> <br><%= cheap_game.steam_rating_percent %>%
             </p>
           </div>
+
+          <div class="d-flex justify-content-between mt-2">
+            <p class="card-text mb-1 text-center">
+              <span class="font-weight-bold bg-secondary text-white">Steam Sale Price</span> <br>$<%= cheap_game.sale_price %>
+            </p>
+            <p class="card-text mb-1 text-center">
+              <span class="font-weight-bold bg-secondary text-white">Regular Price</span> <br>$<%= cheap_game.normal_price %>
+            </p>
+          </div>
+
+          <div class="d-flex justify-content-between mt-2">
+            <p class="card-text mb-1 text-center">
+              <% percent_off = ((cheap_game.normal_price - cheap_game.sale_price) / cheap_game.normal_price) * 100%>
+              <span class="font-weight-bold bg-secondary text-white">Game Steam Sale</span> <br><%= percent_off.floor %>% OFF
+            </p>
+            <p class="card-text mb-1 text-center">
+              <% total_savings = cheap_game.normal_price - cheap_game.sale_price %>
+              <% format_savings = "%.2f" % total_savings %>
+              <span class="font-weight-bold bg-secondary text-white">Your Savings</span> <br>$<%= format_savings %>
+            </p>
+          </div>
+
+          <div class="d-flex justify-content-center mt-2 text-center">
+            <p class="card-text mb-1" style="width: 100%;">
+              <button class="font-weight-bold btn btn-success buy-button" style="width: 100%;" data-url="https://store.steampowered.com/app/<%= cheap_game.steam_app_id %>">BUY</button>
+            </p>
+          </div>
+
         </div>
       </div>
     </div>

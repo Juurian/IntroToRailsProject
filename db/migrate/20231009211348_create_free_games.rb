@@ -9,6 +9,7 @@ class CreateFreeGames < ActiveRecord::Migration[7.0]
       t.string :platform
       t.string :publisher
       t.date :release_date
+      t.string :thumbnail
 
       t.timestamps
     end

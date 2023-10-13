@@ -38,6 +38,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_09_214620) do
     t.string "platform"
     t.string "publisher"
     t.date "release_date"
+    t.string "thumbnail"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

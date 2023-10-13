@@ -1,7 +1,7 @@
 .pagination-container a, em, span{
   margin: 0 4px; /* Add spacing between page links */
-  color: #007bff; /* Change the link color */
-  background-color: #fff; /* Change the background color */
+  color: #ffffff; /* Change the link color */
+  background-color: #414141; /* Change the background color */
   border: 1px solid #c3e0ff; /* Add a border to the page links */
   padding: 4px 8px; /* Adjust padding for the links */
   border-radius: 4px; /* Round the corners */

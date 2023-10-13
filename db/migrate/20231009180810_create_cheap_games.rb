@@ -11,6 +11,9 @@ class CreateCheapGames < ActiveRecord::Migration[7.0]
       t.integer :steam_rating_count
       t.integer :steam_app_id
       t.string :thumbnail
+      t.decimal :sale_price
+      t.decimal :normal_price
+      t.string :savings
 
       t.timestamps
     end

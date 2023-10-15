@@ -45,35 +45,6 @@
       <% end %>
     </div>
 
-<!--
-    <table class="table table-striped">
-      <thead>
-        <tr>
-          <th>Title</th>
-          <th>Description</th>
-          <th>URL</th>
-          <th>Genre</th>
-          <th>Platform</th>
-          <th>Publisher</th>
-          <th>Release Date</th>
-        </tr>
-      </thead>
-      <tbody>
-        <% @free_games.each do |free_game| %>
-          <tr>
-            <td><%= free_game.title %></td>
-            <td><%= free_game.fdescription %></td>
-            <td><a href="<%= free_game.url %>" target="_blank">Visit</a></td>
-            <td><%= free_game.genre %></td>
-            <td><%= free_game.platform %></td>
-            <td><%= free_game.publisher %></td>
-            <td><%= free_game.release_date %></td>
-          </tr>
-        <% end %>
-      </tbody>
-    </table>
--->
-
     <!-- Pagination -->
     <div class="pagination-container mb-4">
       <%= will_paginate @free_games, previous_label: 'Previous', next_label: 'Next', class: 'pagination justify-content-center' %>

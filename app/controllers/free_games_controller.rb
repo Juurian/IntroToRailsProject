@@ -8,4 +8,8 @@ class FreeGamesController < ApplicationController
     # Pagination
     @free_games = @free_games.paginate(page: params[:page], per_page: 10)
   end
+
+  def show
+    @free_game = FreeGame.find(params[:id])
+  end
 end

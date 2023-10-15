@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= @free_game.title %></title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+
+<body>
+
+  <div class="container mt-4">
+    <div class="row justify-content-center">
+      <div class="col-md-8">
+        <div>
+          <h1 class="text-center"><%= @free_game.title %></h1>
+        </div>
+      </div>
+    </div>
+
+    <div class="row justify-content-center mt-4">
+      <div class="col-md-8">
+        <div class="border rounded p-5">
+          <div class="row">
+            <div class="col-md-4">
+              <h2>Game info</h2>
+              <img src="<%= @free_game.thumbnail %>" class="img-fluid" alt="<%= @free_game.title %>">
+            </div>
+            <div class="col-md-8">
+
+              <p><strong>Description:</strong> <%= @free_game.fdescription %></p>
+              <p><strong>URL: <a href="<%= @free_game.url %>">Click here!</a></strong></p>
+              <p><strong>Genre:</strong> <%= @free_game.genre %></p>
+              <p><strong>Platform:</strong> <%= @free_game.platform %></p>
+              <p><strong>Publisher:</strong> <%= @free_game.publisher %></p>
+              <p><strong>Release date:</strong> <%= @free_game.release_date %></p>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Display the description from the associated GameSummary, if available -->
+    <div class="row justify-content-center mt-4">
+      <div class="col-md-8">
+        <div class="border rounded p-5">
+          <h2 class="text-center">Game Summary</h2>
+          <% game_summary = GameSummary.find_by(id: @free_game.summary_id) %>
+          <% if game_summary.present? %>
+            <p><%= game_summary.game_summary %></p>
+          <% else %>
+            <p class="text-center">No game summary available</p>
+          <% end %>
+        </div>
+      </div>
+    </div>
+
+
+  </div>
+</body>
+</html>

@@ -8,7 +8,6 @@
 </head>
 
 <body>
-  <%= render 'shared/navbar' %>
 
   <div class="container mt-4">
     <h1 class="mb-4">Free Games</h1>
@@ -30,7 +29,23 @@
       <%= will_paginate @free_games, previous_label: 'Previous', next_label: 'Next', class: 'pagination justify-content-center' %>
     </div>
 
-    <!-- Table showing data -->
+    <div class="row">
+      <% @free_games.each do |free_game| %>
+        <div class="col-md-4">
+          <div class="card mb-4">
+            <div class="card-body">
+              <h5><%= link_to free_game.title, free_game_path(free_game), class: "text-reset card-title" %></h5>
+              <a href="<%= free_game_path(free_game) %>">
+                <img src="<%= free_game.thumbnail %>" class="card-img-top" alt="<%= free_game.title %>">
+              </a>
+              <h6><%= free_game.publisher %><h6>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+
+<!--
     <table class="table table-striped">
       <thead>
         <tr>
@@ -57,6 +72,7 @@
         <% end %>
       </tbody>
     </table>
+-->
 
     <!-- Pagination -->
     <div class="pagination-container mb-4">

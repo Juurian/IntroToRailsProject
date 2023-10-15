@@ -3,58 +3,86 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Free Games</title>
+  <title>Search Results</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
 </head>
 
 <body>
   <%= render 'shared/navbar' %>
 
-      <div class="row">
-    <% @cheap_games.each do |cheap_game| %>
-      <div class="col-md-4">
-        <div class="card mb-4">
-          <div class="card-body">
-            <h5><%= link_to cheap_game.title, cheap_game_path(cheap_game), class: "text-reset card-title" %></h5>
-            <a href="<%= cheap_game_path(cheap_game) %>">
-              <img src="<%= cheap_game.thumbnail %>" class="card-img-top" alt="<%= cheap_game.title %>">
-            </a>
-          </div>
-        </div>
+  <div class="container mt-4">
+    <div class="row">
+      <!-- Cheap Games Section -->
+      <div class="col-md-12">
+        <h2>Cheap Games</h2>
+        <% if @cheap_games.empty? %>
+          <p>No results found in the Cheap Games category.</p>
+        <% else %>
+        <p><strong><%= @cheap_games.count %></strong> results found in the Cheap Games category.</p>
+          <% @cheap_games.each do |cheap_game| %>
+            <div class="col-md-4">
+              <div class="card mb-4">
+                <div class="card-body">
+                  <h5><%= link_to cheap_game.title, cheap_game_path(cheap_game), class: "text-reset card-title" %></h5>
+                  <a href="<%= cheap_game_path(cheap_game) %>">
+                    <img src="<%= cheap_game.thumbnail %>" class="card-img-top" alt="<%= cheap_game.title %>">
+                  </a>
+                </div>
+              </div>
+            </div>
+          <% end %>
+        <% end %>
       </div>
-    <% end %>
-  </div>
+    </div>
 
-      <div class="row">
-    <% @free_games.each do |free_game| %>
-      <div class="col-md-4">
-        <div class="card mb-4">
-          <div class="card-body">
-            <h5><%= link_to free_game.title, free_games_path(free_game), class: "text-reset card-title" %></h5>
-            <a href="<%= free_games_path(free_game) %>">
-              <img src="<%= free_game.thumbnail %>" class="card-img-top" alt="<%= free_game.title %>">
-            </a>
-          </div>
-        </div>
+    <div class="row">
+      <!-- Free Games Section -->
+      <div class="col-md-12 mt-4">
+        <h2>Free Games</h2>
+        <% if @free_games.empty? %>
+          <p>No results found in the Free Games category.</p>
+        <% else %>
+        <p><strong><%= @free_games.count %></strong> results found in the Cheap Games category.</p>
+          <% @free_games.each do |free_game| %>
+            <div class="col-md-4">
+              <div class="card mb-4">
+                <div class="card-body">
+                  <h5><%= link_to free_game.title, free_games_path(free_game), class: "text-reset card-title" %></h5>
+                  <a href="<%= free_games_path(free_game) %>">
+                    <img src="<%= free_game.thumbnail %>" class="card-img-top" alt="<%= free_game.title %>">
+                  </a>
+                </div>
+              </div>
+            </div>
+          <% end %>
+        <% end %>
       </div>
-    <% end %>
-  </div>
+    </div>
 
-
-
-      <div class="row">
-    <% @giveaways.each do |giveaway| %>
-      <div class="col-md-4">
-        <div class="card mb-4">
-          <div class="card-body">
-            <h5><%= link_to giveaway.title, giveaway_path(giveaway), class: "text-reset card-title" %></h5>
-            <a href="<%= giveaway_path(giveaway) %>">
-              <img src="<%= giveaway.thumbnail %>" class="card-img-top" alt="<%= giveaway.title %>">
-            </a>
-            <h6><%= giveaway.worth %> worth giveaway!<h6>
-          </div>
-        </div>
+    <div class="row">
+      <!-- Giveaways Section -->
+      <div class="col-md-12 mt-4">
+        <h2>Giveaways</h2>
+        <% if @giveaways.empty? %>
+          <p>No results found in the Giveaways category.</p>
+        <% else %>
+        <p><strong><%= @giveaways.count %></strong> results found in the Cheap Games category.</p>
+          <% @giveaways.each do |giveaway| %>
+            <div class="col-md-4">
+              <div class="card mb-4">
+                <div class="card-body">
+                  <h5><%= link_to giveaway.title, giveaway_path(giveaway), class: "text-reset card-title" %></h5>
+                  <a href="<%= giveaway_path(giveaway) %>">
+                    <img src="<%= giveaway.thumbnail %>" class="card-img-top" alt="<%= giveaway.title %>">
+                  </a>
+                  <h6><%= giveaway.worth %> worth giveaway!<h6>
+                </div>
+              </div>
+            </div>
+          <% end %>
+        <% end %>
       </div>
-    <% end %>
+    </div>
   </div>
 </body>
+</html>

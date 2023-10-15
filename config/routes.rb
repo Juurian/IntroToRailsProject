@@ -7,4 +7,6 @@ Rails.application.routes.draw do
   resources :game_summaries, only: [:index]
   resources :giveaways, only: %i[index show]
   resources :abouts, only: [:index]
+
+  get "/search", to: "search#search", as: "search"
 end

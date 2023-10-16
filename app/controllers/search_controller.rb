@@ -24,10 +24,8 @@ class SearchController < ApplicationController
         @free_games = @free_games.where("title LIKE ?", search_query)
         @giveaways = @giveaways.where("title LIKE ?", search_query)
 
-        @free_games = @free_games.where("platform LIKE ? OR platform LIKE ?", "%PC (Windows)%",
-                                        "%PC%")
-        @giveaways = @giveaways.where("platforms LIKE ? OR platforms LIKE ?", "%PC (Windows)%",
-                                      "%PC%")
+        @free_games = @free_games.where("platform LIKE ?", "%PC%")
+        @giveaways = @giveaways.where("platforms LIKE ?", "%PC%")
         @debug = "yes search, platform = all platform, pc, steam"
         # if user has text input and select something other than PC
       else
@@ -52,10 +50,8 @@ class SearchController < ApplicationController
     # if user has no text input and selected PC
     elsif params[:platform] == "PC"
       @free_games = FreeGame.all
-      @free_games = @free_games.where("platform LIKE ? OR platform LIKE ?", "%PC (Windows)%",
-                                      "%PC%")
-      @giveaways = @giveaways.where("platforms LIKE ? OR platforms LIKE ?", "%PC (Windows)%",
-                                    "%PC%")
+      @free_games = @free_games.where("platform LIKE ?", "%PC%")
+      @giveaways = @giveaways.where("platforms LIKE ?", "%PC%")
       @debug = "no search, platform = all platform or pc or steam"
     # if user has no text input and selected something other than PC
     else

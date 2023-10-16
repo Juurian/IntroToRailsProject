@@ -57,7 +57,7 @@
             <div class="col-md-3 mb-3"> <!-- Use col-md-3 to create four equal columns -->
               <div class="card bg-secondary text-white">
                 <div class="card-body">
-                  <h5><%= link_to free_game.title, free_games_path(free_game), class: "text-reset card-title" %></h5>
+                  <h5><%= link_to free_game.title, free_game_path(free_game), class: "text-reset card-title" %></h5>
                   <a href="<%= free_game_path(free_game) %>">
                     <img src="<%= free_game.thumbnail %>" class="card-img-top" alt="<%= free_game.title %>">
                   </a>

@@ -10,6 +10,19 @@
 <body>
   <%= render 'shared/navbar' %>
 
+  <!-- debug mode
+  <%= @debug %>
+  <br>
+  <%= @search_query %>
+  <br>
+  <%= @platform_query%>
+  -->
+
+  <p>cheap games: <%= @cheap_games.count%><p>
+  <p>free games: <%= @free_games.count%><p>
+  <p>giveaways: <%= @giveaways.count%></p>
+
+
   <div class="container mt-4">
     <div class="row">
       <!-- Cheap Games Section -->

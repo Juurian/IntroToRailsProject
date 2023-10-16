@@ -33,4 +33,26 @@
       </ul>
     </div>
   </div>
+
+<!-- Search form
+  <%= form_tag(search_path, method: :get, class: "form-inline") do %>
+    <div class="input-group">
+      <%= text_field_tag :search, params[:search], class: "form-control", placeholder: "Search by Game Title" %>
+      <div class="input-group-append">
+        <%= submit_tag "Search", class: "btn btn-primary" %>
+      </div>
+    </div>
+  <% end %>
+-->
+
+<%= form_tag(search_path, method: :get, class: "form-inline") do %>
+  <div class="input-group">
+    <%= text_field_tag :search, params[:search], class: "form-control", placeholder: "Search by Game Title" %>
+    <div class="input-group-append">
+      <%= select_tag :platform, options_for_select(["All Platforms", "PC", "Web Browser", "Android", "iOS", "Playstation 4", "Playstation 5", "Xbox"], params[:platform]), class: "form-control" %>
+      <%= submit_tag "Search", class: "btn btn-primary" %>
+    </div>
+  </div>
+<% end %>
+
 </nav>

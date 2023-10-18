@@ -1,57 +1,46 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Game Summaries</title>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
-</head>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
 
-<body>
-<div class="container">
-  <h1 class="mt-4">Game Summaries</h1>
 
-  <!-- Search Form -->
-  <div class="mb-3">
-    <%= form_tag(game_summaries_path, method: :get, class: "form-inline") do %>
-      <div class="input-group">
-        <%= text_field_tag :search, params[:search], class: "form-control", placeholder: "Search by Game Title" %>
-        <div class="input-group-append">
-          <%= submit_tag "Search", class: "btn btn-primary" %>
+  <div class="container bg-dark text-white">
+    <h1 class="mt-4">Game Summaries</h1>
+
+    <!-- Search Form -->
+    <div class="mb-3">
+      <%= form_tag(game_summaries_path, method: :get, class: "form-inline") do %>
+        <div class="input-group">
+          <%= text_field_tag :search, params[:search], class: "form-control", placeholder: "Search by Game Title" %>
+          <div class="input-group-append">
+            <%= submit_tag "Search", class: "btn btn-primary" %>
+          </div>
         </div>
-      </div>
-    <% end %>
-  </div>
-
-  <!-- Pagination -->
-  <div class="pagination-container mb-4">
-    <%= will_paginate @game_summaries, previous_label: 'Previous', next_label: 'Next', class: 'pagination justify-content-center' %>
-  </div>
-
-  <!-- Table showing data -->
-  <table class="table table-striped mt-4">
-    <thead>
-      <tr>
-        <th>Title</th>
-        <th>Summary</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @game_summaries.each do |game_summary| %>
-        <tr>
-          <td><%= game_summary.summary_game_title %></td>
-          <td><%= game_summary.game_summary %></td>
-        </tr>
       <% end %>
-    </tbody>
-  </table>
+    </div>
 
-  <!-- Pagination -->
-  <div class="pagination-container mb-4">
-    <%= will_paginate @game_summaries, previous_label: 'Previous', next_label: 'Next', class: 'pagination justify-content-center' %>
+    <!-- Pagination -->
+    <div class="pagination-container mb-4">
+      <%= will_paginate @game_summaries, previous_label: 'Previous', next_label: 'Next', class: 'pagination justify-content-center' %>
+    </div>
+
+    <!-- Table showing data -->
+    <table class="table table-striped mt-4">
+      <thead>
+        <tr>
+          <th>Title</th>
+          <th>Summary</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @game_summaries.each do |game_summary| %>
+          <tr>
+            <td><%= game_summary.summary_game_title %></td>
+            <td><%= game_summary.game_summary %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+
+    <!-- Pagination -->
+    <div class="pagination-container mb-4">
+      <%= will_paginate @game_summaries, previous_label: 'Previous', next_label: 'Next', class: 'pagination justify-content-center' %>
+    </div>
   </div>
-</div>
-
-
-</body>
-</html>

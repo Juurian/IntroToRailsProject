@@ -7,3 +7,11 @@
   border-radius: 4px; /* Round the corners */
 }
 
+body::-webkit-scrollbar {
+  width: 0.5em; /* Adjust as needed */
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: #888; /* Adjust as needed */
+}
+

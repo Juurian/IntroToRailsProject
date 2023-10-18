@@ -20,11 +20,11 @@
 
     <div class="row justify-content-center mt-4">
       <div class="col-md-8">
-        <div class="border rounded p-5">
+        <div class="border rounded p-5 bg-dark text-white">
           <div class="row">
             <div class="col-md-4">
               <h2>Game info on Steam</h2>
-              <img src="<%= @cheap_game.thumbnail %>" class="img-fluid" alt="<%= @cheap_game.title %>">
+              <img src="<%= @cheap_game.thumbnail %>" class="img-fluid" alt="<%= @cheap_game.title %>" style="width: 100%; height: auto;">
             </div>
             <div class="col-md-8">
               <p><strong><a href="https://www.metacritic.com<%= @cheap_game.metacritic_link %>">Metacritic Link</a></strong></p>
@@ -32,6 +32,7 @@
               <p><strong>Steam Rating Text:</strong> <%= @cheap_game.steam_rating_text %></p>
               <p><strong>Steam Rating Percent:</strong> <%= @cheap_game.steam_rating_percent %></p>
               <p><strong>Steam App ID:</strong> <%= @cheap_game.steam_app_id %></p>
+              <%= link_to "Back To Previous Page", :back, class: "btn btn-secondary mb-3" %>
             </div>
           </div>
         </div>
@@ -41,7 +42,7 @@
     <!-- Display the description from the associated GameSummary, if available -->
     <div class="row justify-content-center mt-4">
       <div class="col-md-8">
-        <div class="border rounded p-5">
+        <div class="border rounded p-5 bg-dark text-white">
           <h2 class="text-center">Game Summary</h2>
           <% game_summary = GameSummary.find_by(id: @cheap_game.game_summary_id) %>
           <% if game_summary.present? %>

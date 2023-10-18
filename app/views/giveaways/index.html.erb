@@ -10,16 +10,16 @@
   <div class="container">
     <h1 class="mb-4">Giveaways</h1>
 
-  <div class="mb-3">
-    <%= form_tag(giveaways_path, method: :get, class: "form-inline") do %>
-      <div class="form-group">
-        <%= text_field_tag :search, params[:search], class: "form-control", placeholder: "Search by Game Title" %>
-        <div class="input-group-append">
-          <%= submit_tag "Search", class: "btn btn-primary" %>
-        </div>
+<div class="mb-3">
+  <%= form_tag(giveaways_path, method: :get, class: "form-inline") do %>
+    <div class="input-group">
+      <%= text_field_tag :search, params[:search], class: "form-control", placeholder: "Search by Game Title" %>
+      <div class="input-group-append">
+        <%= submit_tag "Search", class: "btn btn-primary" %>
       </div>
-    <% end %>
-  </div>
+    </div>
+  <% end %>
+</div>
 
   <div class="pagination-container mb-4">
     <%= will_paginate @giveaways, previous_label: 'Previous', next_label: 'Next', class: 'pagination justify-content-center' %>

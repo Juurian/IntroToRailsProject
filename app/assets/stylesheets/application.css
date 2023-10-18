@@ -15,3 +15,13 @@ body::-webkit-scrollbar-thumb {
   background-color: #888; /* Adjust as needed */
 }
 
+#hier_search{
+  width: 300px;
+  border-radius: 5px;
+}
+
+#platform{
+  width: 100px;
+  border-radius: 5px;
+}
+

@@ -33,12 +33,23 @@
       </ul>
     </div>
   </div>
-<%= form_tag(search_path, method: :get, class: "form-inline") do %>
+<%= form_tag(search_path, method: :get, class: "form-inline", id: "searchForm") do %>
   <div class="input-group align-items-center">
-    <%= text_field_tag :search, params[:search], class: "form-control col-10", placeholder: "Search by Game", id: "hier_search"%>
+    <%= text_field_tag :search, params[:search], class: "form-control col-6", placeholder: "Search by Game", id: "hier_search"%>
     <%= select_tag :platform, options_for_select(["All Platforms", "PC", "Web Browser", "Android", "iOS", "Playstation 4", "Playstation 5", "Xbox"], params[:platform]), class: "form-control" %>
-    <%= submit_tag "Search", class: "btn btn-primary" %>
+    <%= submit_tag "Search", class: "btn btn-primary", id:"hier_search_button", onclick: "return validateForm()" %>
   </div>
 <% end %>
+
+<script>
+  function validateForm() {
+    var searchInput = document.getElementById("hier_search").value;
+    if (searchInput.trim() === "") {
+      alert("Please search a game title.");
+      return false; // Prevent form submission
+    }
+    return true; // Allow form submission
+  }
+</script>
 
 </nav>

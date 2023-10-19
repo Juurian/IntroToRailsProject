@@ -10,16 +10,29 @@
   <div class="container">
     <h1 class="mb-4">Giveaways</h1>
 
+<!-- Search Form -->
 <div class="mb-3">
-  <%= form_tag(giveaways_path, method: :get, class: "form-inline") do %>
+  <%= form_tag(giveaways_path, method: :get, class: "form-inline", id: "searchForm4") do %>
     <div class="input-group">
-      <%= text_field_tag :search, params[:search], class: "form-control", placeholder: "Search by Game Title" %>
+      <%= text_field_tag :search, params[:search], class: "form-control", placeholder: "Search by Game Title", id: "searchInput4" %>
       <div class="input-group-append">
-        <%= submit_tag "Search", class: "btn btn-primary" %>
+        <%= submit_tag "Search", class: "btn btn-primary", onclick: "return validateForm4()" %>
       </div>
     </div>
   <% end %>
 </div>
+
+<script>
+  function validateForm4() {
+    var searchInput = document.getElementById("searchInput4").value;
+    if (searchInput.trim() === "") {
+      alert("Please search a game title.");
+      return false; // Prevent form submission
+    }
+    return true; // Allow form submission
+  }
+</script>
+
 
   <div class="pagination-container mb-4">
     <%= will_paginate @giveaways, previous_label: 'Previous', next_label: 'Next', class: 'pagination justify-content-center' %>

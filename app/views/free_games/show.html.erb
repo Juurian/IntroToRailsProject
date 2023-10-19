@@ -31,6 +31,7 @@
               <p><strong>Description:</strong> <%= @free_game.fdescription %></p>
               <p><strong>URL: <a href="<%= @free_game.url %>">Click here!</a></strong></p>
               <p><strong>Genre:</strong> <%= @free_game.genre %></p>
+              <p><strong>Genre:</strong> <%= link_to @free_game.genre, genre_filtered_games_path(genre: @free_game.genre) %></p>
               <p><strong>Platform:</strong> <%= @free_game.platform %></p>
               <p><strong>Publisher:</strong> <%= @free_game.publisher %></p>
               <p><strong>Release date:</strong> <%= @free_game.release_date %></p>

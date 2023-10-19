@@ -9,4 +9,5 @@ Rails.application.routes.draw do
   resources :abouts, only: [:index]
 
   get "/search", to: "search#search", as: "search"
+  get "/games/genre/:genre", to: "free_games#index", as: :genre_filtered_games
 end
